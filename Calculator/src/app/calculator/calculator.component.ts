@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
@@ -10,7 +12,8 @@ export class CalculatorComponent implements OnInit {
   result : string = '0';
   isNewNumber : boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+   }
 
   ngOnInit(): void {
   }
@@ -22,11 +25,18 @@ export class CalculatorComponent implements OnInit {
   }
 
   saveToMemory() {
+    const newNumber : Object = {
+      number: this.input
+    }
 
+    this.http.post<{ message: string, number: string }>("http://localhost:3000/writefile/", newNumber);
   }
 
   getFromMemory() {
-
+    this.http.get<{message: string, number: string }>("http://localhost:3000")
+      .subscribe((final) => {
+        this.input = final.number;
+      });
   }
 
   pressNumber(number: any) {
