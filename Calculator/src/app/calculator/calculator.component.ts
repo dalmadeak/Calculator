@@ -29,7 +29,8 @@ export class CalculatorComponent implements OnInit {
       number: this.input
     }
 
-    this.http.post<{ message: string, number: string }>("http://localhost:3000/writefile/", newNumber);
+    this.http.post<{ message: string, number: string }>("http://localhost:3000/writefile/", newNumber)
+    .subscribe();
   }
 
   getFromMemory() {

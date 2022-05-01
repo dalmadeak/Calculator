@@ -13,8 +13,6 @@ app.use((req,res,next) => {
   next();
 });
 
-let number = 120;
-
 app.post('/writefile', function(req, res) {
   fs.writeFile('calculator.txt', req.body.number , function(err) {
     if (err) {
