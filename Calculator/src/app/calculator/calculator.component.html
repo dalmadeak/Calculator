@@ -3,11 +3,7 @@
     <h1 >Calculator application</h1>
 
     <div>
-      <input type="text" value={{input}}>
-    </div>
-
-    <div>
-      <input type="text" value={{result}}>
+      <input type="text" pattern="[0-9.]+" value={{input}}>
     </div>
 
     <div>
@@ -18,26 +14,26 @@
     </div>
 
     <div>
-      <button type="button" (click)="pressNumber(7)">7</button>
-      <button type="button" (click)="pressNumber(8)">8</button>
-      <button type="button" (click)="pressNumber(9)">9</button>
+      <button type="button" (click)="pressNumber('7')">7</button>
+      <button type="button" (click)="pressNumber('8')">8</button>
+      <button type="button" (click)="pressNumber('9')">9</button>
       <button type="button" (click)="pressOperator('*')">x</button>
     </div>
     <div>
-      <button type="button" (click)="pressNumber(4)">4</button>
-      <button type="button" (click)="pressNumber(5)">5</button>
-      <button type="button" (click)="pressNumber(6)">6</button>
+      <button type="button" (click)="pressNumber('4')">4</button>
+      <button type="button" (click)="pressNumber('5')">5</button>
+      <button type="button" (click)="pressNumber('6')">6</button>
       <button type="button" (click)="pressOperator('-')">-</button>
     </div>
     <div>
-      <button type="button" (click)="pressNumber(1)">1</button>
-      <button type="button" (click)="pressNumber(2)">2</button>
-      <button type="button" (click)="pressNumber(3)">3</button>
+      <button type="button" (click)="pressNumber('1')">1</button>
+      <button type="button" (click)="pressNumber('2')">2</button>
+      <button type="button" (click)="pressNumber('3')">3</button>
       <button type="button" (click)="pressOperator('+')">+</button>
     </div>
     <div>
       <button type="button" (click)="pressNumber('.')">.</button>
-      <button type="button" (click)="pressNumber(0)">0</button>
+      <button type="button" (click)="pressNumber('0')">0</button>
       <button type="button" (click)="getAnswer()">=</button>
     </div>
 
