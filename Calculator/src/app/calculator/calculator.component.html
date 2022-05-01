@@ -1,40 +1,42 @@
-<div>
-  <div>
-    <h1 >Calculator application</h1>
+<div id="calculator">
+  <div id="container">
+    <h1>Calculator application</h1>
 
-    <div>
+    <div id="input">
       <input type="text" pattern="[0-9.]+" value={{input}}>
     </div>
 
-    <div>
-      <button type="button" (click)="clear()">C</button>
-      <button type="button" (click)="saveToMemory()">S</button>
-      <button type="button" (click)="getFromMemory()">Ans</button>
-      <button type="button" (click)="pressOperator('/')">/</button>
-    </div>
+    <div id="button-container">
+      <div class="button-row">
+        <button type="button" class="button-operator"(click)="clear()">C</button>
+        <button type="button" class="button-operator"(click)="saveToMemory()">S</button>
+        <button type="button" class="button-operator"(click)="getFromMemory()">Ans</button>
+        <button type="button" class="button-operator" (click)="pressOperator('/')">/</button>
+      </div>
 
-    <div>
-      <button type="button" (click)="pressNumber('7')">7</button>
-      <button type="button" (click)="pressNumber('8')">8</button>
-      <button type="button" (click)="pressNumber('9')">9</button>
-      <button type="button" (click)="pressOperator('*')">x</button>
-    </div>
-    <div>
-      <button type="button" (click)="pressNumber('4')">4</button>
-      <button type="button" (click)="pressNumber('5')">5</button>
-      <button type="button" (click)="pressNumber('6')">6</button>
-      <button type="button" (click)="pressOperator('-')">-</button>
-    </div>
-    <div>
-      <button type="button" (click)="pressNumber('1')">1</button>
-      <button type="button" (click)="pressNumber('2')">2</button>
-      <button type="button" (click)="pressNumber('3')">3</button>
-      <button type="button" (click)="pressOperator('+')">+</button>
-    </div>
-    <div>
-      <button type="button" (click)="pressNumber('.')">.</button>
-      <button type="button" (click)="pressNumber('0')">0</button>
-      <button type="button" (click)="getAnswer()">=</button>
+      <div class="button-row">
+        <button type="button" (click)="pressNumber('7')">7</button>
+        <button type="button" (click)="pressNumber('8')">8</button>
+        <button type="button" (click)="pressNumber('9') ">9</button>
+        <button type="button"  class="button-operator" (click)="pressOperator('*')">x</button>
+      </div>
+      <div class="button-row">
+        <button type="button" (click)="pressNumber('4')">4</button>
+        <button type="button" (click)="pressNumber('5')">5</button>
+        <button type="button" (click)="pressNumber('6')">6</button>
+        <button type="button" class="button-operator" (click)="pressOperator('-')">-</button>
+      </div>
+      <div class="button-row">
+        <button type="button" (click)="pressNumber('1')">1</button>
+        <button type="button" (click)="pressNumber('2')">2</button>
+        <button type="button" (click)="pressNumber('3')">3</button>
+        <button type="button" class="button-operator" (click)="pressOperator('+')">+</button>
+      </div>
+      <div class="button-row">
+        <button type="button" (click)="pressNumber('.')">.</button>
+        <button type="button" (click)="pressNumber('0')">0</button>
+        <button type="button" class="button-operator" (click)="getAnswer()">=</button>
+      </div>
     </div>
 
   </div>
