@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,44 +7,44 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  input : string = '0';
-  result : string = '0';
-  isNewNumber : boolean = false;
+  private baseUrl : string = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient) {
-   }
+  public input : string = '0';
+  public result : string = '0';
+  public isNewNumber : boolean = false;
 
-  ngOnInit(): void {
-  }
+  constructor(private http: HttpClient) { }
 
-  clear() {
+  ngOnInit(): void { }
+
+  clear(): void {
     this.input = '0';
     this.result = '0';
     this.isNewNumber = false;
   }
 
-  saveToMemory() {
+  saveToMemory(): void {
     const newNumber : Object = {
       number: this.input
     }
 
-    this.http.post<{ message: string, number: string }>("http://localhost:3000/writefile/", newNumber)
+    this.http.post<{ message: string, number: string }>(this.baseUrl + 'writefile', newNumber)
     .subscribe();
   }
 
-  getFromMemory() {
-    this.http.get<{message: string, number: string }>("http://localhost:3000")
-      .subscribe((final) => {
-        this.input = final.number;
-      });
+  getFromMemory(): void {
+    this.http.get<{message: string, number: string }>(this.baseUrl + 'readfile')
+    .subscribe((final) => {
+      this.input = final.number;
+    });
   }
 
-  pressNumber(number: any) {
+  pressNumber(number: any): void {
     if (this.isNewNumber) {
       this.input = '0';
     }
 
-    if(!(this.input.includes('.') && number == '.')) {
+    if (!(this.input.includes('.') && number == '.')) {
       if (this.input != '0' ||
         (this.input == '0' && number == '.')) {
           this.input = this.input + number;
@@ -57,23 +56,22 @@ export class CalculatorComponent implements OnInit {
     this.isNewNumber = false;
   }
 
-  pressOperator(operator: string) {
+  pressOperator(operator: string): void {
     let operators = ['+', '-', '*', '/'];
 
     if (this.result != '0') {
       this.getAnswer();
     }
 
-    if( !(operators.some(el => this.result.includes(el)))) {
+    if (!(operators.some(el => this.result.includes(el)))) {
       this.result = this.input + operator;
       this.isNewNumber = true;
     }
   }
 
-  getAnswer() {
+  getAnswer(): void {
     this.input = parseFloat(eval(this.result + this.input).toFixed(5)).toString();
     this.result = '0';
     this.isNewNumber = true;
   }
-
 }
