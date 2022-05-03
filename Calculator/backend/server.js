@@ -46,4 +46,4 @@ const server = http.createServer(app);
 server.on('error', onError);
 server.on('listening', onListening);
 server.listen(port);
-console.log('Szerver elindítva!')
+console.log('Server started!')

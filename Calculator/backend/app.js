@@ -1,7 +1,6 @@
-const express = require('express'),
-      fs = require('fs'),
-      url = require('url');
-var bodyParser = require("body-parser");
+const express = require('express');
+const fs = require('fs');
+var bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,23 +13,21 @@ app.use((req,res,next) => {
 });
 
 app.post('/writefile', function(req, res) {
-  fs.writeFile('calculator.txt', req.body.number , function(err) {
+  fs.writeFile('./calculator.txt', req.body.number , function(err) {
     if (err) {
        res.status(500).jsonp({ error: 'Failed to write file' });
     }
-    res.send("File write success");
+    res.send('File write success');
   });
 });
 
-
-app.get('/', function(req,res) {
-  const content = fs.readFile("./calculator.txt", "utf8", function(err, data){
+app.get('/readfile', function(req,res) {
+  const content = fs.readFile('./calculator.txt', 'utf8', function(err, data){
     res.status(200).json({
       message: 'Number fetched successfully',
       number: data
     });
-});
-
+  });
 })
 
 module.exports = app;
